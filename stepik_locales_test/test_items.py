@@ -2,7 +2,7 @@ from selenium.common.exceptions import NoSuchElementException, NoAlertPresentExc
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
-from .locators import BasePageLocators
+from .locators import BasePage
 
 
 class BasePage:
@@ -18,12 +18,12 @@ class BasePage:
 
     def go_to_login_page(self):
         '''- Navigates to a login page by clicking a link in the header'''
-        self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
+        self.browser.find_element(*BasePage.LOGIN_LINK).click()
 
 
     def go_to_basket_page(self):
         '''- Navigates to a basket page by clicking a link in the header'''
-        self.browser.find_element(*BasePageLocators.BASKET_LINK).click()
+        self.browser.find_element(*BasePage.BASKET_LINK).click()
 
 
     def is_element_present(self, locator_type, locator: str) -> bool:
@@ -73,12 +73,12 @@ class BasePage:
 
     def should_be_authorized_user(self):
         '''- Verifies if the current user is authorized based on user icon'''
-        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented, probably unauthorized user"
+        assert self.is_element_present(*BasePage.USER_ICON), "User icon is not presented, probably unauthorized user"
 
 
     def should_be_login_link(self):
         '''- Verifies the login link is present on the page'''
-        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not found"
+        assert self.is_element_present(*BasePage.LOGIN_LINK), "Login link is not found"
 
 
     def solve_quiz_and_get_code(self):
